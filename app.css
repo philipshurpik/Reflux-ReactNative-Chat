@@ -1,0 +1,181 @@
+/* CSS declarations go here */
+body {
+    font-family: sans-serif;
+    background-color: #AED3D3;
+    background-attachment: fixed;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    padding: 0;
+    margin: 0;
+
+    font-size: 14px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    min-height: 100%;
+    background: white;
+}
+
+header {
+    background-color: #E6F7F1;
+    padding: 20px 15px 15px 15px;
+    position: relative;
+}
+
+.header-new-room {
+    float: right;
+    padding: 0 10px 10px;
+    cursor: pointer;
+}
+
+.room-item-delete {
+    float: right;
+    padding: 0 31px 10px;
+    cursor: pointer;
+    color: darkred;
+}
+
+#login-buttons {
+    display: block;
+    position: absolute;
+    z-index: 10;
+}
+
+h1 {
+    font-size: 1.5em;
+    margin: 0;
+    margin-bottom: 10px;
+    display: inline-block;
+    margin-right: 1em;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    background: white;
+}
+
+li {
+    position: relative;
+    list-style: none;
+    padding: 15px;
+    border-bottom: #eee solid 1px;
+}
+
+/******** CreateRoom.css *****/
+
+.create-room {
+    position: absolute;
+    top: 150%;
+    left: 25%;
+    width: 50%;
+    padding: 10%;
+    background-color: #E6F7F1;
+    box-sizing: border-box;
+    transition: all 0.5s ease;
+}
+.create-room-visible {
+    top: 30%;
+}
+
+.new-room {
+    margin-top: 10px;
+    margin-bottom: -10px;
+    position: relative;
+}
+
+.new-room h4 {
+    font-weight: 500;
+}
+
+.new-room input {
+    box-sizing: border-box;
+    padding: 10px 5px;
+    background: white;
+    border: none;
+    width: 240px;
+    font-size: 1em;
+}
+
+.new-room input:focus{
+    outline: 0;
+}
+
+.new-room button {
+    width: 110px;
+    margin-top: 15px;
+    margin-right: 15px;
+    background: white;
+    color: #6DA896;
+    border: 1px solid #6DA896;
+    font-size: 1em;
+}
+
+
+/******** Room.css *****/
+
+.room {
+    position: absolute;
+    top: 150%;
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    background-color: white;
+    box-sizing: border-box;
+    transition: all 0.5s ease;
+    z-index: 20;
+}
+.room-visible {
+    top: 0;
+}
+
+.header-close-room {
+    float: right;
+    padding: 0 10px 10px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.room-new-message {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #E6F7F1;
+}
+
+.room input {
+    box-sizing: border-box;
+    padding: 10px 5px;
+    background: white;
+    border: none;
+    width: 75%;
+    margin: 10px 2%;
+    font-size: 1em;
+}
+
+.room input:focus{
+    outline: 0;
+}
+
+.room button {
+    width: 18%;
+    margin-top: 15px;
+    background: white;
+    color: #6DA896;
+    border: 1px solid #6DA896;
+    font-size: 1em;
+    box-sizing: border-box;
+    padding: 8px 5px;
+}
+
+.room-message-date {
+    float: right;
+}
