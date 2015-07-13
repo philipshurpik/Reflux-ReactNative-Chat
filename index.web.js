@@ -1,9 +1,9 @@
 var React = require('react');
 var Router = require('react-router');
 var { Route, DefaultRoute, RouteHandler } = Router;
-var Chat = require('./src/Chat/ChatPage.js');
-var Room = require('./src/Room/RoomPage.js');
-var NewRoom = require('./src/NewRoom/NewRoomPage.js');
+var Chat = require('./src/Chat/ChatPage.web.js');
+var Room = require('./src/Room/RoomPage.web.js');
+var NewRoom = require('./src/NewRoom/NewRoomPage.web.js');
 
 var App = React.createClass({
     render () {

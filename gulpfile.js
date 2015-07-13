@@ -12,7 +12,7 @@ gulp.task('scripts', function() {
     })
         .transform(babelify)
         .bundle()
-        .pipe(source('bundle.js'))
+        .pipe(source('bundle.web.js'))
         .pipe(gulp.dest('build'));
 });
 

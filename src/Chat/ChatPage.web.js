@@ -4,7 +4,7 @@ var Router = require('react-router');
 var { Link } = Router;
 var Ratchet = require('react-ratchet');
 var { NavBar, NavButton, Title, TableView } = Ratchet;
-var RoomsList = require('./RoomsList');
+var RoomItem = require('./RoomItem.web.js');
 var chatStore = require('./chatStore');
 
 var ChatPage = React.createClass({
@@ -14,13 +14,18 @@ var ChatPage = React.createClass({
         this.setState(state);
     },
     render: function () {
+        var roomNodes = this.state.roomsList.map(function (room) {
+            return <RoomItem room={room} key={room.id}></RoomItem>
+        });
         return <div className="chat">
             <NavBar>
                 <NavButton right icon={false}><Link to="newRoom">New Room</Link></NavButton>
                 <Title>Chat</Title>
             </NavBar>
             <TableView>
-                <RoomsList roomsList={this.state.roomsList} />
+                <div className="filesList">
+                    {roomNodes}
+                </div>
             </TableView>
         </div>;
     }
