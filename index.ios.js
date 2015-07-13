@@ -1,5 +1,6 @@
 var React = require('react-native');
 var ChatPage = require('./src/Chat/ChatPage.ios.js');
+var NewRoomPage = require('./src/NewRoom/NewRoomPage.ios.js');
 
 var { AppRegistry, NavigatorIOS } = React;
 
@@ -12,11 +13,18 @@ var styles = React.StyleSheet.create({
 var ReNativeChat = React.createClass({
     render() {
         var initialRoute = {
-            title: 'Chat',
-            component: ChatPage
+            title: 'Chat Rooms',
+            component: ChatPage,
+            rightButtonTitle: "New",
+            onRightButtonPress: () => {
+                this.refs.nav.push({
+                    title: 'New room',
+                    component: NewRoomPage
+                });
+            }
         };
         return (
-            <NavigatorIOS style={styles.container} initialRoute={initialRoute} />
+            <NavigatorIOS ref="nav" style={styles.container} initialRoute={initialRoute}/>
         )
     }
 });

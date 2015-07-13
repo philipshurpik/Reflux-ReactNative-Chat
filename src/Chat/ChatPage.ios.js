@@ -3,6 +3,7 @@ var Reflux = require('reflux');
 var chatStore = require('./chatStore');
 var { StyleSheet, ListView, Text, TouchableHighlight, View } = React;
 var RoomPage = require('./../Room/RoomPage.ios.js');
+var NewRoomPage = require('./../NewRoom/NewRoomPage.ios.js');
 
 
 var styles = StyleSheet.create({
