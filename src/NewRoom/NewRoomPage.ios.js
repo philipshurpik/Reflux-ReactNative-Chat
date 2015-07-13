@@ -1,7 +1,6 @@
 var React = require('react-native');
 var { StyleSheet, View, Text } = React;
 
-
 var styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -10,7 +9,7 @@ var styles = StyleSheet.create({
     }
 });
 
-var NewRoomPage = React.createClass({
+class NewRoomPage extends React.Component {
     render() {
         return (
             <View style={styles.container}>
@@ -18,6 +17,6 @@ var NewRoomPage = React.createClass({
             </View>
         );
     }
-});
+};
 
 module.exports = NewRoomPage;

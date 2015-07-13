@@ -1,8 +1,10 @@
 var Reflux = require('reflux');
+var actions = require('../actions');
 
 var chatStore = Reflux.createStore({
     list: [],
-    getInitialState: function () {
+
+    getInitialState() {
         this.list = [{
             name: "Javascript",
             id: 1
@@ -16,7 +18,15 @@ var chatStore = Reflux.createStore({
             name: "Android",
             id: 4
         }];
-        return this.list;
+        return { roomsList: this.list};
+    },
+
+    init() {
+        this.listenTo(actions.getRooms, this.getRooms);
+    },
+
+    getRooms() {
+        this.trigger({roomsList: this.list});
     }
 });
 

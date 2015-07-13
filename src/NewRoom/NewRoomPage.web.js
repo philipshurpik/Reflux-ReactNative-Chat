@@ -1,9 +1,9 @@
 var React = require('react');
 
-var CreateRoomPage = React.createClass({
-    render: function () {
+class NewRoomPage extends React.Component{
+    render() {
         return <h2>CreateRoomPage</h2>;
     }
-});
+}
 
-module.exports = CreateRoomPage;
+module.exports = NewRoomPage;

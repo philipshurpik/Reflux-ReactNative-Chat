@@ -1,10 +1,7 @@
 var React = require('react-native');
-var Reflux = require('reflux');
 var chatStore = require('./chatStore');
 var { StyleSheet, ListView, Text, TouchableHighlight, View } = React;
 var RoomPage = require('./../Room/RoomPage.ios.js');
-var NewRoomPage = require('./../NewRoom/NewRoomPage.ios.js');
-
 
 var styles = StyleSheet.create({
     textContainer: {
@@ -24,13 +21,22 @@ var styles = StyleSheet.create({
     }
 });
 
-var ChatPage = React.createClass({
-    mixins: [Reflux.connect(chatStore, "roomsList"), Reflux.listenTo(chatStore, "onRoomsChange")],
-    onRoomsChange: function (files, state) {
-        console.log('rooms list changed');
-        this.setState(state);
-    },
-    render: function () {
+class ChatPage extends React.Component {
+
+    constructor() {
+        super();
+        this.state = chatStore.getInitialState();
+    }
+
+    componentDidMount() {
+        this.unsubscribe = chatStore.listen((state) => this.setState(state));
+    }
+
+    componentWillUnmount() {
+        this.unsubscribe();
+    }
+
+    render() {
         var dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         dataSource = dataSource.cloneWithRows(this.state.roomsList);
 
@@ -40,7 +46,8 @@ var ChatPage = React.createClass({
                 renderRow={this.renderRow}
                 />
         );
-    },
+    }
+
     renderRow(rowData, sectionID, rowID) {
         return (
             <TouchableHighlight onPress={() => this.rowPressed(rowData.id)} underlayColor='#dddddd'>
@@ -54,15 +61,16 @@ var ChatPage = React.createClass({
                 </View>
             </TouchableHighlight>
         );
-    },
+    }
+
     rowPressed(rowId) {
         var room = this.state.roomsList.filter(row => row.id === rowId)[0];
         this.props.navigator.push({
             title: 'Room',
             component: RoomPage,
-            passProps: { room: room }
+            passProps: {room: room}
         });
     }
-});
+}
 
 module.exports = ChatPage;

@@ -1,6 +1,6 @@
 var React = require('react-native');
-var ChatPage = require('./src/chat/ChatPage.ios.js');
-var NewRoomPage = require('./src/newRoom/NewRoomPage.ios.js');
+var ChatPage = require('./src/Chat/ChatPage.ios.js');
+var NewRoomPage = require('./src/NewRoom/NewRoomPage.ios.js');
 
 var { AppRegistry, NavigatorIOS } = React;
 

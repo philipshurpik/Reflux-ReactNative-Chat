@@ -1,8 +1,6 @@
 var React = require('react-native');
-var Reflux = require('reflux');
 var roomStore = require('./roomStore');
 var { StyleSheet, View, Text } = React;
-
 
 var styles = StyleSheet.create({
     container: {
@@ -12,7 +10,7 @@ var styles = StyleSheet.create({
     }
 });
 
-var RoomPage = React.createClass({
+class RoomPage extends React.Component{
     render() {
         return (
             <View style={styles.container}>
@@ -20,6 +18,6 @@ var RoomPage = React.createClass({
             </View>
         );
     }
-});
+}
 
 module.exports = RoomPage;
