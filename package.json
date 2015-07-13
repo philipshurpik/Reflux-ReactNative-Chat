@@ -1,11 +1,11 @@
 {
-  "name": "Reflux-ReactNative-Chat",
+  "name": "ReNativeChat",
   "version": "0.0.1",
-  "description": "Reflux-ReactNative-Chat",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "prestart": "npm i",
-    "start": "gulp"
+    "start": "node_modules/react-native/packager/packager.sh",
+    "preweb": "npm i",
+    "web": "gulp"
   },
   "author": "Philip Shurpik",
   "license": "MIT",
