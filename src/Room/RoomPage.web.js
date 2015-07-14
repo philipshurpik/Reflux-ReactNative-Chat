@@ -56,6 +56,7 @@ class RoomPage extends React.Component{
 
     handleSendClick() {
         actions.sendMessage(this.state.message, this.props.params.id);
+        this.state.message = "";
     }
 }
 RoomPage.contextTypes = { router: React.PropTypes.func };

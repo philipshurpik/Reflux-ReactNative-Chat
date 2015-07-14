@@ -2,6 +2,7 @@ var React = require('react-native');
 var chatStore = require('./chatStore');
 var { StyleSheet, ListView, Text, TouchableHighlight, View } = React;
 var RoomPage = require('./../Room/RoomPage.ios.js');
+var actions = require('../actions');
 
 var styles = StyleSheet.create({
     textContainer: {
@@ -25,11 +26,14 @@ class ChatPage extends React.Component {
 
     constructor() {
         super();
-        this.state = chatStore.getInitialState();
+        this.state = {roomsList: []}
     }
 
     componentDidMount() {
-        this.unsubscribe = chatStore.listen((state) => this.setState(state));
+        this.unsubscribe = chatStore.listen((state) => {
+            this.setState(state);
+        });
+        actions.getRooms();
     }
 
     componentWillUnmount() {

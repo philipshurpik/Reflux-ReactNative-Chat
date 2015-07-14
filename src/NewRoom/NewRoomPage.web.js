@@ -26,8 +26,10 @@ class NewRoomPage extends React.Component{
     }
 
     handleCreateClick() {
-        actions.createRoom(this.state.name);
-        this.context.router.goBack();
+        if (this.state.name.trim().length > 0) {
+            actions.createRoom(this.state.name);
+            this.context.router.goBack();
+        }
     }
 }
 NewRoomPage.contextTypes = { router: React.PropTypes.func };
