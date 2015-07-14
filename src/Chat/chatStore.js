@@ -14,6 +14,8 @@ var chatStore = Reflux.createStore({
         firebase.on("value", this.initData.bind(this), function (errorObject) {
             console.log("The read failed: " + errorObject.code);
         });
+
+        firebase.on("child_added", this.onNewMessage.bind(this));
     },
     
     initData(snapshot) {
@@ -30,6 +32,12 @@ var chatStore = Reflux.createStore({
         this.trigger({roomsList: this.list});
     },
 
+    onNewMessage(snapshot) {
+        var newRoom = snapshot.val();
+        this.list.push(newRoom);
+        this.trigger({roomsList: this.list});
+    },
+
     getRooms() {
         this.trigger({roomsList: this.list});
     },
@@ -40,8 +48,6 @@ var chatStore = Reflux.createStore({
             id: this.list.length + 1
         };
         firebase.push(room);
-        this.list.push(room);
-        this.trigger({roomsList: this.list});
     }
 });
 
