@@ -1,0 +1,7 @@
+body {
+    position: initial !important;
+}
+
+.chat .table-view {
+    margin-top: 44px;
+}
