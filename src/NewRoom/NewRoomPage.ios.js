@@ -2,6 +2,28 @@ var React = require('react-native');
 var { StyleSheet, View, Text, TextInput, TouchableHighlight } = React;
 var actions = require('../actions');
 
+class NewRoomPage extends React.Component {
+    render() {
+        return (
+            <View style={styles.container}>
+                <TextInput style={styles.input}
+                           onChange={(evt) => this.setState({name: evt.nativeEvent.text})}
+                    />
+                <TouchableHighlight style={styles.button} underlayColor='#99d9f4' onPress={this.handlePressed.bind(this)}>
+                    <Text style={styles.buttonText}>Create</Text>
+                </TouchableHighlight>
+            </View>
+        );
+    }
+
+    handlePressed() {
+        if (this.state.name.trim().length > 0) {
+            actions.createRoom(this.state.name);
+            this.props.navigator.pop();
+        }
+    }
+}
+
 var styles = StyleSheet.create({
     container: {
         padding: 30,
@@ -38,27 +60,5 @@ var styles = StyleSheet.create({
         marginBottom: 10
     }
 });
-
-class NewRoomPage extends React.Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <TextInput style={styles.input}
-                           onChange={(evt) => this.setState({name: evt.nativeEvent.text})}
-                    />
-                <TouchableHighlight style={styles.button} underlayColor='#99d9f4' onPress={this.handlePressed.bind(this)}>
-                    <Text style={styles.buttonText}>Create</Text>
-                </TouchableHighlight>
-            </View>
-        );
-    }
-
-    handlePressed() {
-        if (this.state.name.trim().length > 0) {
-            actions.createRoom(this.state.name);
-            this.props.navigator.pop();
-        }
-    }
-}
 
 module.exports = NewRoomPage;

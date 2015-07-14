@@ -35,9 +35,9 @@ class RoomPage extends React.Component{
             </TableView>
             <TableView className="create-message">
                 <TableViewCell divider></TableViewCell>
-                <input id="message" type="text" autoFocus autoComplete="off"
+                <input id="message" type="text" autoFocus autoComplete="off" value={this.state.message}
                        onChange={(evt) => this.setState({message: evt.target.value})}/>
-                <Button block outlined rStyle="positive" onClick={this.handleSendClick.bind(this)}>Create</Button>
+                <Button block outlined rStyle="positive" onClick={this.handleSendClick.bind(this)}>Send</Button>
             </TableView>
         </div>);
     }
@@ -56,7 +56,7 @@ class RoomPage extends React.Component{
 
     handleSendClick() {
         actions.sendMessage(this.state.message, this.props.params.id);
-        this.state.message = "";
+        this.setState({message: ""});
     }
 }
 RoomPage.contextTypes = { router: React.PropTypes.func };

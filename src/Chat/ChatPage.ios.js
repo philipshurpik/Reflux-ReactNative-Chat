@@ -4,24 +4,6 @@ var { StyleSheet, ListView, Text, TouchableHighlight, View } = React;
 var RoomPage = require('./../Room/RoomPage.ios.js');
 var actions = require('../actions');
 
-var styles = StyleSheet.create({
-    textContainer: {
-        flex: 1
-    },
-    separator: {
-        height: 1,
-        backgroundColor: '#dddddd'
-    },
-    title: {
-        fontSize: 20,
-        color: '#656565'
-    },
-    rowContainer: {
-        flexDirection: 'row',
-        padding: 10
-    }
-});
-
 class ChatPage extends React.Component {
 
     constructor() {
@@ -47,7 +29,7 @@ class ChatPage extends React.Component {
         return (
             <ListView
                 dataSource={dataSource}
-                renderRow={this.renderRow}
+                renderRow={this.renderRow.bind(this)}
                 />
         );
     }
@@ -76,5 +58,23 @@ class ChatPage extends React.Component {
         });
     }
 }
+
+var styles = StyleSheet.create({
+    textContainer: {
+        flex: 1
+    },
+    separator: {
+        height: 1,
+        backgroundColor: '#dddddd'
+    },
+    title: {
+        fontSize: 20,
+        color: '#656565'
+    },
+    rowContainer: {
+        flexDirection: 'row',
+        padding: 10
+    }
+});
 
 module.exports = ChatPage;
