@@ -10,13 +10,14 @@ class ChatPage extends React.Component {
 
     constructor() {
         super();
-        this.state = chatStore.getInitialState();
+        this.state = {roomsList: []}
     }
 
     componentDidMount() {
         this.unsubscribe = chatStore.listen((state) => {
             this.setState(state);
         });
+        actions.getRooms();
     }
 
     componentWillUnmount() {
@@ -40,11 +41,13 @@ class ChatPage extends React.Component {
     }
 
     renderRow(room) {
-        return (<Link to="room" params={{id: room.id}} key={room.id}>
-            <TableViewCell navigateRight className="roomItem">
-                {room.name}
+        return (
+            <TableViewCell navigateRight className="roomItem" key={room.id}>
+
+                <Link to="room" props={{name: room.name}} params={{id: room.id, name: room.name }}> {room.name} </Link>
             </TableViewCell>
-        </Link>)
+        )
+
     }
 }
 

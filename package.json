@@ -14,7 +14,8 @@
     "react-router": "0.13.3",
     "react": "^0.13.3",
     "react-native": "0.8.0-rc",
-    "react-ratchet": "^0.4.1"
+    "react-ratchet": "^0.4.1",
+    "firebase": "^2.2.7"
   },
   "devDependencies": {
     "vinyl-source-stream": "^1.1.0",

@@ -15,7 +15,7 @@ var routes = (
     <Route handler={App}>
         <DefaultRoute handler={Chat}/>
         <Route name="chat" path="chat" handler={Chat}/>
-        <Route name="room" path="rooms/:id" handler={Room}/>
+        <Route name="room" path="rooms/:id/:name" handler={Room}/>
         <Route name="newRoom" path="newRoom" handler={NewRoom}/>
     </Route>
 );

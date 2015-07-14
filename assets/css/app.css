@@ -5,3 +5,51 @@ body {
 .chat .table-view {
     margin-top: 44px;
 }
+
+.chat .navigate-right {
+    position: absolute !important;
+    right: 65px;
+    top: 20px;
+}
+
+.new-room {
+    margin: 100px auto;
+    max-width: 400px;
+}
+.new-room input {
+    height: 50px !important;
+}
+
+.new-room .table-view {
+    border:0;
+    background-image: none;
+}
+
+.room {
+    margin: 44px auto 0;
+    max-width: 400px;
+}
+
+.room .table-view-divider {
+    margin-bottom: 15px;
+}
+
+.room .create-message {
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+    max-width: 400px;
+    width: 100%;
+}
+
+.room .create-message input {
+    height: 50px !important;
+    width: 70%;
+    margin-right: 5%;
+    float: left;
+}
+
+.room .create-message button {
+    width: 25%;
+    float: left;
+}
