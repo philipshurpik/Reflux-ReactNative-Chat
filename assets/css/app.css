@@ -34,6 +34,14 @@ body {
     margin-bottom: 15px;
 }
 
+.room .messages {
+    position: absolute;
+    width: 400px;
+    bottom: 76px;
+    top: 43px;
+    overflow: auto;
+}
+
 .room .create-message {
     position: absolute;
     bottom: 0;
