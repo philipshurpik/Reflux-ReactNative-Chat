@@ -43,8 +43,7 @@ class ChatPage extends React.Component {
     renderRow(room) {
         return (
             <TableViewCell navigateRight className="roomItem" key={room.id}>
-
-                <Link to="room" props={{name: room.name}} params={{id: room.id, name: room.name }}> {room.name} </Link>
+                <Link to="room" props={{name: room.name}} params={{id: room.id, name: room.name }}>{room.name}</Link>
             </TableViewCell>
         )
 

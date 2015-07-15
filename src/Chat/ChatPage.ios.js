@@ -67,13 +67,13 @@ var styles = StyleSheet.create({
         height: 1,
         backgroundColor: '#dddddd'
     },
-    title: {
-        fontSize: 20,
-        color: '#656565'
-    },
     rowContainer: {
         flexDirection: 'row',
         padding: 10
+    },
+    rowTitle: {
+        fontSize: 20,
+        color: '#656565'
     }
 });
 

@@ -45,7 +45,7 @@ class RoomPage extends React.Component{
     renderRow(message) {
         return (
             <TableViewCell className="messageItem" key={message.id}>
-                {message.text}
+                {message.formattedDate}: {message.text}
             </TableViewCell>
         );
     }

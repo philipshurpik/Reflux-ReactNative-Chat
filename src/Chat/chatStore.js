@@ -15,7 +15,7 @@ var chatStore = Reflux.createStore({
             console.log("The read failed: " + errorObject.code);
         });
 
-        firebase.on("child_added", this.onNewMessage.bind(this));
+        firebase.on("child_added", this.onNewRoom.bind(this));
     },
     
     initData(snapshot) {
@@ -32,7 +32,7 @@ var chatStore = Reflux.createStore({
         this.trigger({roomsList: this.list});
     },
 
-    onNewMessage(snapshot) {
+    onNewRoom(snapshot) {
         var newRoom = snapshot.val();
         this.list.push(newRoom);
         this.trigger({roomsList: this.list});

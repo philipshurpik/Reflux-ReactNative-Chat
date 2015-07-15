@@ -48,11 +48,13 @@ var roomStore = Reflux.createStore({
     },
 
     sendMessage(text, roomId) {
+        var formattedDate = (new Date()).toLocaleTimeString().replace(' PM','').replace(' AM','');
         var message = {
             text: text,
             id: this.messages.length + 1,
             roomId: roomId,
-            date: Date.now()
+            date: Date.now(),
+            formattedDate: formattedDate
         };
         firebase.push(message);
     }
