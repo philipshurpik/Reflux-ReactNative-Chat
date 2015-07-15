@@ -6,6 +6,7 @@ class NewRoomPage extends React.Component {
     render() {
         return (
             <View style={styles.container}>
+                <Text style={styles.label}>Name:</Text>
                 <TextInput style={styles.input}
                            onChange={(evt) => this.setState({name: evt.nativeEvent.text})}
                     />
@@ -24,40 +25,36 @@ class NewRoomPage extends React.Component {
     }
 }
 
+var elHeight = 50;
 var styles = StyleSheet.create({
     container: {
         padding: 30,
-        marginTop: 65,
-        alignItems: 'center'
+        marginTop: 100
     },
     buttonText: {
         fontSize: 18,
-        color: 'white',
+        color: 'green',
         alignSelf: 'center'
     },
     button: {
-        height: 36,
-        flex: 1,
-        flexDirection: 'row',
-        backgroundColor: '#48BBEC',
-        borderColor: '#48BBEC',
+        height: elHeight,
+        borderColor: 'lightgreen',
         borderWidth: 1,
-        borderRadius: 8,
-        marginBottom: 10,
+        borderRadius: 4,
         alignSelf: 'stretch',
         justifyContent: 'center'
     },
+    label: {
+        alignSelf: 'flex-start',
+        marginBottom: 3
+    },
     input: {
-        height: 36,
-        padding: 4,
-        marginRight: 5,
-        flex: 4,
+        height: elHeight,
+        borderColor: 'grey',
         fontSize: 18,
         borderWidth: 1,
-        borderColor: '#48BBEC',
-        borderRadius: 8,
-        color: '#48BBEC',
-        marginBottom: 10
+        borderRadius: 4,
+        marginBottom: 20
     }
 });
 
