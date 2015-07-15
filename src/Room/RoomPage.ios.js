@@ -27,19 +27,28 @@ class RoomPage extends React.Component{
         dataSource = dataSource.cloneWithRows(this.state.messagesList);
 
         return (
-        <View>
-            <ListView
+        <View style={styles.mainContainer}>
+            <ListView style={styles.listView}
                 dataSource={dataSource}
                 renderRow={this.renderRow}
                 />
-            <TextInput style={styles.newInput} value={this.state.message}
-                       onChange={(evt) => this.setState({message: evt.nativeEvent.text})}
-                />
-            <TouchableHighlight style={styles.newButton} underlayColor='#99d9f4' onPress={this.handleSendClick.bind(this)}>
-                <Text style={styles.newButtonText}>Send</Text>
-            </TouchableHighlight>
+            <View style={styles.newMessage}>
+                <TextInput style={styles.newInput} value={this.state.message}
+                           onChange={(evt) => this.setState({message: evt.nativeEvent.text})}
+                    />
+                <TouchableHighlight style={styles.newButton} underlayColor='#99d9f4' onPress={this.handleSendClick.bind(this)}>
+                    <Text style={styles.newButtonText}>Send</Text>
+                </TouchableHighlight>
+            </View>
         </View>
+
         );
+        /*<View style={styles.newMessage}>
+         <TextInput style={styles.newInput} value={this.state.message}
+         onChange={(evt) => this.setState({message: evt.nativeEvent.text})}
+         />
+
+         </View>*/
     }
 
     renderRow(rowData, sectionID, rowID) {
@@ -47,9 +56,8 @@ class RoomPage extends React.Component{
             <TouchableHighlight underlayColor='#dddddd'>
                 <View>
                     <View style={styles.rowContainer}>
-                        <View style={styles.textContainer}>
-                            <Text style={styles.title} numberOfLines={1}>{rowData.text}</Text>
-                        </View>
+                        <Text style={styles.messageDate}>{rowData.formattedDate}</Text>
+                        <Text style={styles.message}>{rowData.text}</Text>
                     </View>
                     <View style={styles.separator}/>
                 </View>
@@ -64,44 +72,51 @@ class RoomPage extends React.Component{
 }
 
 var styles = StyleSheet.create({
-    textContainer: {
+    mainContainer: {
         flex: 1
+    },
+
+    listView: {
+        flex: 10
     },
     separator: {
         height: 1,
         backgroundColor: '#dddddd'
     },
-    title: {
+    rowContainer: {
+        flexDirection: 'column',
+        padding: 10
+    },
+    message: {
         fontSize: 20,
         color: '#656565'
     },
-    rowContainer: {
-        flexDirection: 'row',
-        padding: 10
+    messageDate: {
+        fontSize: 12,
+        color: '#656565'
     },
 
-
+    newMessage: {
+        flex: 1,
+        padding: 10,
+        paddingTop: 20,
+        flexDirection: "row"
+    },
+    newInput: {
+        flex: 4,
+        borderColor: 'lightgrey',
+        fontSize: 18,
+        borderWidth: 1
+    },
+    newButton: {
+        flex: 1,
+        backgroundColor: '#48BBEC',
+        justifyContent: 'center'
+    },
     newButtonText: {
         fontSize: 18,
         color: 'white',
         alignSelf: 'center'
-    },
-    newButton: {
-        height: 40,
-        flex: 1,
-        flexDirection: 'column',
-        backgroundColor: '#48BBEC',
-        right: 0,
-        bottom: 0
-    },
-    newInput: {
-        height: 40,
-        flex: 4,
-        flexDirection: 'column',
-        fontSize: 18,
-        color: '#48BBEC',
-        left: 0,
-        bottom: 0
     }
 });
 
