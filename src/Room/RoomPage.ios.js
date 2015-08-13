@@ -43,12 +43,6 @@ class RoomPage extends React.Component{
         </View>
 
         );
-        /*<View style={styles.newMessage}>
-         <TextInput style={styles.newInput} value={this.state.message}
-         onChange={(evt) => this.setState({message: evt.nativeEvent.text})}
-         />
-
-         </View>*/
     }
 
     renderRow(rowData, sectionID, rowID) {
@@ -104,8 +98,8 @@ var styles = StyleSheet.create({
     },
     newInput: {
         flex: 4,
-        borderColor: 'lightgrey',
-        fontSize: 18,
+        borderColor: 'green',
+        fontSize: 10*2,
         borderWidth: 1
     },
     newButton: {
