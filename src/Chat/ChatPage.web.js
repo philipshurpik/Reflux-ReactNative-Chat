@@ -1,13 +1,11 @@
-var React = require('react');
-var Router = require('react-router');
-var { Link } = Router;
-var Ratchet = require('react-ratchet');
-var { NavBar, NavButton, Title, TableView, TableViewCell } = Ratchet;
-var chatStore = require('./chatStore');
-var actions = require('../actions');
+import React from 'react';
+import { Link } from 'react-router'
+import { NavBar, NavButton, Title, TableView, TableViewCell } from 'react-ratchet';
 
-class ChatPage extends React.Component {
+import chatStore from './chatStore';
+import actions from '../actions';
 
+export default class ChatPage extends React.Component {
     constructor() {
         super();
         this.state = {roomsList: []}
@@ -29,7 +27,9 @@ class ChatPage extends React.Component {
 
         return <div className="chat">
             <NavBar>
-                <NavButton right icon={false}><Link to="newRoom">New Room</Link></NavButton>
+                <NavButton right icon={false}>
+                    <Link to="/newRoom">New Room</Link>
+                </NavButton>
                 <Title>Chat</Title>
             </NavBar>
             <TableView>
@@ -43,11 +43,10 @@ class ChatPage extends React.Component {
     renderRow(room) {
         return (
             <TableViewCell navigateRight className="roomItem" key={room.id}>
-                <Link to="room" props={{name: room.name}} params={{id: room.id, name: room.name }}>{room.name}</Link>
+                <Link to={`/room/${room.id}/${room.name}`} props={{name: room.name}} >
+                    {room.name}
+                </Link>
             </TableViewCell>
         )
-
     }
 }
-
-module.exports = ChatPage;

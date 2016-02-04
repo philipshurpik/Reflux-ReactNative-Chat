@@ -1,9 +1,13 @@
-var React = require('react');
-var Ratchet = require('react-ratchet');
-var { NavBar, NavButton, Title, TableView, Button } = Ratchet;
-var actions = require('../actions');
+import React from 'react';
+import { NavBar, NavButton, Title, TableView, Button } from 'react-ratchet';
 
-class NewRoomPage extends React.Component{
+import actions from '../actions';
+
+export default class NewRoomPage extends React.Component {
+
+    static contextTypes = {
+        history: React.PropTypes.object
+    };
 
     render() {
         return (<div className="new-room">
@@ -22,16 +26,15 @@ class NewRoomPage extends React.Component{
     }
 
     handleBackClick() {
-        this.context.router.goBack();
+        this.context.history.goBack();
     }
 
     handleCreateClick() {
         if (this.state.name.trim().length > 0) {
             actions.createRoom(this.state.name);
-            this.context.router.goBack();
+            this.context.history.goBack();
         }
     }
 }
-NewRoomPage.contextTypes = { router: React.PropTypes.func };
 
 module.exports = NewRoomPage;

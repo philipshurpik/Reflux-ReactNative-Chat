@@ -1,10 +1,14 @@
-var React = require('react');
-var Ratchet = require('react-ratchet');
-var { NavBar, NavButton, Title, TableView, TableViewCell, Button } = Ratchet;
-var roomStore = require('./roomStore');
-var actions = require('../actions');
+import React from 'react';
+import { NavBar, NavButton, Title, TableView, TableViewCell, Button } from 'react-ratchet';
 
-class RoomPage extends React.Component{
+import roomStore from './roomStore';
+import actions from '../actions';
+
+export default class RoomPage extends React.Component{
+
+    static contextTypes = {
+        history: React.PropTypes.object
+    };
 
     constructor() {
         super();
@@ -51,7 +55,7 @@ class RoomPage extends React.Component{
     }
 
     handleBackClick() {
-        this.context.router.goBack();
+        this.context.history.goBack();
     }
 
     handleSendClick() {
@@ -59,6 +63,5 @@ class RoomPage extends React.Component{
         this.setState({message: ""});
     }
 }
-RoomPage.contextTypes = { router: React.PropTypes.func };
 
 module.exports = RoomPage;

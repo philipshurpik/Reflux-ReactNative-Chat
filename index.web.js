@@ -1,27 +1,30 @@
-var React = require('react');
-var Router = require('react-router');
-var { Route, DefaultRoute, RouteHandler } = Router;
-var Chat = require('./src/Chat/ChatPage.web.js');
-var Room = require('./src/Room/RoomPage.web.js');
-var NewRoom = require('./src/NewRoom/NewRoomPage.web.js');
+import React from 'react'
+var { Component } = React;
+import { render } from 'react-dom'
+import { Router, Route, Link, IndexRoute } from 'react-router'
+import createHistory from 'history/lib/createHashHistory';
 
-var App = React.createClass({
-    render () {
-        return (<RouteHandler/>)
+import Chat from './src/Chat/ChatPage.web.js'
+import Room from './src/Room/RoomPage.web.js'
+import NewRoom from './src/NewRoom/NewRoomPage.web.js'
+
+class App extends Component {
+    render() {
+        return <div>{this.props.children}</div>;
     }
-});
+}
 
-var routes = (
-    <Route handler={App}>
-        <DefaultRoute handler={Chat}/>
-        <Route name="chat" path="chat" handler={Chat}/>
-        <Route name="room" path="rooms/:id/:name" handler={Room}/>
-        <Route name="newRoom" path="newRoom" handler={NewRoom}/>
+const routes = (
+    <Route path="/" component={App}>
+        <IndexRoute component={Chat} />
+        <Route path="chat" component={Chat}/>
+        <Route path="room/:id/:name" component={Room}/>
+        <Route path="newRoom" component={NewRoom}/>
     </Route>
 );
 
-Router.run(routes, Router.HashLocation, (Root) => {
-    React.render(<Root/>, document.body);
+let content = document.getElementById('content');
+var history = createHistory({
+    queryKey: false
 });
-
-
+render(<Router routes={routes} history={history}/>, content);

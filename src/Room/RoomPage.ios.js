@@ -4,23 +4,19 @@ var { StyleSheet, ListView, Text, TouchableHighlight, View, TextInput } = React;
 var actions = require('../actions');
 
 class RoomPage extends React.Component{
-
     constructor() {
         super();
         this.state = {messagesList: []}
     }
-
     componentDidMount() {
         this.unsubscribe = roomStore.listen((state) => {
             this.setState(state);
         });
         actions.openRoom(this.props.room.id.toString());
     }
-
     componentWillUnmount() {
         this.unsubscribe();
     }
-
 
     render() {
         var dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -41,7 +37,6 @@ class RoomPage extends React.Component{
                 </TouchableHighlight>
             </View>
         </View>
-
         );
     }
 

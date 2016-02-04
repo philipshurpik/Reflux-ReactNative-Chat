@@ -27,7 +27,7 @@ var styles = StyleSheet.create({
         flex: 1
     },
     content: {
-        flexDirection: 'row'
+        flexDirection: 'column'
     },
     element: {
         padding: 20,
